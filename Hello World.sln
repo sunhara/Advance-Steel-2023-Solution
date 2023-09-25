@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello World", "\10.1.37.5\国住共享文件夹\国住设计区\设计共享区\BIM项目\高级钢铁Advance Steel\Advance Steel Solution\Advance Steel 2023 Solution\Advance Steel 2023 Solution\Hello World.csproj", "{D64BD017-FBA0-4A55-A5C1-773919573FDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D64BD017-FBA0-4A55-A5C1-773919573FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D64BD017-FBA0-4A55-A5C1-773919573FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D64BD017-FBA0-4A55-A5C1-773919573FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D64BD017-FBA0-4A55-A5C1-773919573FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF8CE40C-48FC-4009-9976-C1619230AF58}
+	EndGlobalSection
+EndGlobal

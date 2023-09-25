@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B53ED298-1507-4CF7-91A3-A441CC41483D}</ProjectGuid>
+    <ProjectGuid>{D64BD017-FBA0-4A55-A5C1-773919573FDD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Advance_Steel_2023_Solution</RootNamespace>

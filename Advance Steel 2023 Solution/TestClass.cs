@@ -10,7 +10,7 @@ namespace HelloWorld
         [CommandMethodAttribute("TEST_GROUP", "HelloWorld", "HelloWorld", CommandFlags.Modal)]
         public void SayHelloWorld()
         {
-            MessageBox.Show("Hello World!");
+            MessageBox.Show("Hello World!!!!");
         }
     }
 }
