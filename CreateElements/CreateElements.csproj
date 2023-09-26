@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D64BD017-FBA0-4A55-A5C1-773919573FDD}</ProjectGuid>
+    <ProjectGuid>{D032D014-4B96-4BC9-A8A5-E4C340581E80}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Advance_Steel_2023_Solution</RootNamespace>
@@ -72,7 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClass.cs" />
+    <Compile Include="CreateElements.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

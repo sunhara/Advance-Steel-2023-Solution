@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello World", "\10.1.37.5\国住共享文件夹\国住设计区\设计共享区\BIM项目\高级钢铁Advance Steel\Advance Steel Solution\Advance Steel 2023 Solution\Advance Steel 2023 Solution\Hello World.csproj", "{D64BD017-FBA0-4A55-A5C1-773919573FDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello World", "Advance Steel 2023 Solution\Hello World.csproj", "{D64BD017-FBA0-4A55-A5C1-773919573FDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateElements", "CreateElements\CreateElements.csproj", "{D032D014-4B96-4BC9-A8A5-E4C340581E80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D64BD017-FBA0-4A55-A5C1-773919573FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D64BD017-FBA0-4A55-A5C1-773919573FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D64BD017-FBA0-4A55-A5C1-773919573FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D032D014-4B96-4BC9-A8A5-E4C340581E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D032D014-4B96-4BC9-A8A5-E4C340581E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D032D014-4B96-4BC9-A8A5-E4C340581E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D032D014-4B96-4BC9-A8A5-E4C340581E80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

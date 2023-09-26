@@ -1,0 +1,6 @@
+\\10.1.37.5\国住共享文件夹\国住设计区\设计共享区\BIM项目\高级钢铁Advance Steel\Advance Steel Solution\bin\Advance Steel 2023 Solution.dll
+\\10.1.37.5\国住共享文件夹\国住设计区\设计共享区\BIM项目\高级钢铁Advance Steel\Advance Steel Solution\bin\Advance Steel 2023 Solution.pdb
+C:\Users\6321011\Desktop\Advance-Steel-2023-Solution\CreateElements\obj\Debug\CreateElements.csproj.AssemblyReference.cache
+C:\Users\6321011\Desktop\Advance-Steel-2023-Solution\CreateElements\obj\Debug\CreateElements.csproj.CoreCompileInputs.cache
+C:\Users\6321011\Desktop\Advance-Steel-2023-Solution\CreateElements\obj\Debug\Advance Steel 2023 Solution.dll
+C:\Users\6321011\Desktop\Advance-Steel-2023-Solution\CreateElements\obj\Debug\Advance Steel 2023 Solution.pdb
