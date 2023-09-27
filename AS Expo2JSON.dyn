@@ -1,0 +1,436 @@
+{
+  "Uuid": "55c19460-4b30-4963-a9ff-e2af2df31bce",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "AS Expo2JSON2",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Property": {
+        "Key": "AdvanceSteel.Nodes.Property",
+        "Value": "AdvanceSteelNodes.dll"
+      },
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Math": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      },
+      "String": {
+        "Key": "DSCore.String",
+        "Value": "DSCoreNodes.dll"
+      },
+      "DSCore.Object": {
+        "Key": "DSCore.Object",
+        "Value": "DSCoreNodes.dll"
+      },
+      "DSCore.Data": {
+        "Key": "DSCore.Data",
+        "Value": "DSCoreNodes.dll"
+      },
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      },
+      "CoordinateSystem": {
+        "Key": "Autodesk.DesignScript.Geometry.CoordinateSystem",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "def GetMark(list,t1,t2)\n{\n\t//single part prefix\n\tsppProperty = Property.GetObjectProperty(list, t1);\n\tspPrefix = Property.Value(sppProperty);\n\t//single part mark\n\tspmProperty = Property.GetObjectProperty(list, t2);\n\tspMark = Property.Value(spmProperty);\n\tsp_value = spPrefix+spMark;\n\treturn sp_value;\n};\n\ndef ConvPlaToKey(obj)\n{\n\t//Get property for the steel object\n\tctPt = Property.GetObjectProperty(obj, \"CenterPoint\");\n\tpt = Property.Value(ctPt);\n\tx = Point.X(pt);\n\ty = Point.Y(pt);\n\tz = Point.Z(pt);\n\t//double to string then to key\n\tstr_x = String.Substring(x+\"\", 0, 8);\n\tstr_y = String.Substring(y+\"\", 0, 8);\n\tstr_z = String.Substring(z+\"\", 0, 8);\n\tXYZ_key = str_x+str_y+str_z;\n\treturn XYZ_key;\n};\n\ndef ConvBeamToKey(obj)\n{\n\t//Get property for the steel object\n\tCoorSys = Property.GetObjectProperty(obj, \"Coordinate System at Physical Mid\");\n\tpt = CoordinateSystem.Origin(Property.Value(CoorSys));\n\tx = Point.X(pt);\n\ty = Point.Y(pt);\n\tz = Point.Z(pt);\n\t//double to string then to key\n\tstr_x = String.Substring(x+\"\", 0, 8);\n\tstr_y = String.Substring(y+\"\", 0, 8);\n\tstr_z = String.Substring(z+\"\", 0, 8);\n\tXYZ_key = str_x+str_y+str_z;\n\treturn XYZ_key;\n};",
+      "Id": "55a7e1d9a3d044238b42480d8f57e41b",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "list = List.Join([l1,l2]);\n//key\nConvObjToKey(list);\n// two values\nsp_mark = GetMark(list,\"SinglePart Prefix\",\"SinglePart Number\");\nas_mark = GetMark(list,\"MainPart Prefix\",\"MainPart Number\");\nvalue = List.AddItemToEnd(sp_mark@L1<1>, as_mark@L1<1>);",
+      "Id": "1cf9983089e84bc380805ddfdfae925f",
+      "Inputs": [
+        {
+          "Id": "e1dabf69d4994efc934678644b508870",
+          "Name": "l1",
+          "Description": "l1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a7624c9b161f4ab8b9240cb612fd4c25",
+          "Name": "l2",
+          "Description": "l2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "768d1c6c19734c628bbd002fb97da253",
+          "Name": "",
+          "Description": "list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5a01d18381cc4eeeb7a681dcadd923b5",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "21cf743787a64562bca85271ce8015c7",
+          "Name": "",
+          "Description": "sp_mark",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f95bc76f1b694ca6aa1105f9706d055b",
+          "Name": "",
+          "Description": "as_mark",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5bbd1e8d4798438e8073462e752b8e76",
+          "Name": "",
+          "Description": "value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DesignScript.Builtin.Dictionary.ByKeysValues@string[],var[]..[]",
+      "Id": "b3d0b0b5ea1d407cb84e7d7bb33801eb",
+      "Inputs": [
+        {
+          "Id": "f928c04052e34390b0c419ec75ea49f2",
+          "Name": "keys",
+          "Description": "Keys of dictionary\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c3e12ee1b3c144bcb51f925db642f69b",
+          "Name": "values",
+          "Description": "Values of dictionary\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4e0f5a9f2e074c46a118efca03a520f9",
+          "Name": "dictionary",
+          "Description": "Dictionary from keys and values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Produces a Dictionary with the supplied keys and values. The number of entries is the shorter of keys or values.\n\nDictionary.ByKeysValues (keys: string[], values: var[]..[]): Dictionary"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\n# -*- coding: utf-8 -*-\r\nimport sys\r\nimport clr\r\nimport json \r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\ndata = IN[0]\r\n\r\n# Place your code below this line\r\n\r\njsonfile = json.dumps(data, indent=4)\r\n\r\nwith open(r'C:\\Users\\6321011\\Desktop\\JSON.txt', 'w') as f:\r\n    f.write(jsonfile)\r\n\r\n#open and read the file after the appending:\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = jsonfile",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "478d4070d6984b2495021cca94619596",
+      "Inputs": [
+        {
+          "Id": "36650ba483e44c7a9c964297e97f39e2",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9e68036f41f84108afb24fa8f4489f0e",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "AdvanceSteel.Nodes.ASSelectObjecTypes, AdvanceSteelNodesUI",
+      "SelectedIndex": 20,
+      "SelectedString": "Straight Beam",
+      "NodeType": "ExtensionNode",
+      "Id": "4d4bd3517f2649a6a1a7b243e9d238c3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "4326dddfa733456daecd8ee2774e6869",
+          "Name": "steelObjects",
+          "Description": "list with the selected steel objects",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select all steel objects by type"
+    },
+    {
+      "ConcreteType": "AdvanceSteel.Nodes.ASSelectObjecTypes, AdvanceSteelNodesUI",
+      "SelectedIndex": 15,
+      "SelectedString": "Plate",
+      "NodeType": "ExtensionNode",
+      "Id": "d0f601a2abc14ecf96534d7343ba0a88",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0b7c31fde6f947c0ac130382471f1dca",
+          "Name": "steelObjects",
+          "Description": "list with the selected steel objects",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select all steel objects by type"
+    },
+    {
+      "ConcreteType": "AdvanceSteel.Nodes.ASPropertiesStraightBeam, AdvanceSteelNodesUI",
+      "SelectedIndex": 13,
+      "SelectedString": "Coordinate System at Physical Mid",
+      "NodeType": "ExtensionNode",
+      "Id": "9209c48cc02a4d5293d58f07347ae4e1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d41d96c85e9549e19978d32ca7b22c2f",
+          "Name": "propertyName",
+          "Description": "name of the selected property",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Lists all the property names of an Advance Steel Straight Beam"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "//function for define plates or beams\ndef ConvObjToKey(obj)\n{\n\treturn = [Imperative]\n\n\t{\n\t\tif (DSCore.Object.Type(obj) == \"AdvanceSteel.Nodes.Plates.Plate\")\n\t\t\t{\n\t\t\treturn ConvPlaToKey(obj);\n\t\t\t}\n\t\telse\n\t\t\t{\n\t\t\treturn ConvBeamToKey(obj);\n\t\t\t}\n\t}\n};",
+      "Id": "3cfe0087d8bb4913b0c0a125d56f5ef8",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "768d1c6c19734c628bbd002fb97da253",
+      "End": "f928c04052e34390b0c419ec75ea49f2",
+      "Id": "b9655d8b38714b90ba51e5aea1103672",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "f95bc76f1b694ca6aa1105f9706d055b",
+      "End": "c3e12ee1b3c144bcb51f925db642f69b",
+      "Id": "3e66d46d1f644fa08d8bf0a1f61a1e67",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "4e0f5a9f2e074c46a118efca03a520f9",
+      "End": "36650ba483e44c7a9c964297e97f39e2",
+      "Id": "aa1151515c2348bfaec1d91595e9d7ae",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "4326dddfa733456daecd8ee2774e6869",
+      "End": "a7624c9b161f4ab8b9240cb612fd4c25",
+      "Id": "9ce2243fe68a4efb88886e3df05760ac",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "0b7c31fde6f947c0ac130382471f1dca",
+      "End": "e1dabf69d4994efc934678644b508870",
+      "Id": "38a094292b994a33ae051f8dd493a610",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.13",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "55a7e1d9a3d044238b42480d8f57e41b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1000.3393155535248,
+        "Y": -575.37370964030015
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "1cf9983089e84bc380805ddfdfae925f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1597.0234939483296,
+        "Y": 270.19603701982282
+      },
+      {
+        "Name": "Dictionary.ByKeysValues",
+        "ShowGeometry": true,
+        "Id": "b3d0b0b5ea1d407cb84e7d7bb33801eb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2330.2803561750757,
+        "Y": 264.12086871989715
+      },
+      {
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Id": "478d4070d6984b2495021cca94619596",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2661.9016084390323,
+        "Y": 259.27600824955522
+      },
+      {
+        "Name": "GetSteelObjectsByType",
+        "ShowGeometry": true,
+        "Id": "4d4bd3517f2649a6a1a7b243e9d238c3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1119.7288145709836,
+        "Y": 530.97947713681094
+      },
+      {
+        "Name": "GetSteelObjectsByType",
+        "ShowGeometry": true,
+        "Id": "d0f601a2abc14ecf96534d7343ba0a88",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1128.2540930662979,
+        "Y": 374.89213996732911
+      },
+      {
+        "Name": "StraightBeamProperties",
+        "ShowGeometry": true,
+        "Id": "9209c48cc02a4d5293d58f07347ae4e1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 960.108967207881,
+        "Y": 688.20538565801326
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "3cfe0087d8bb4913b0c0a125d56f5ef8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1767.3348550604369,
+        "Y": -138.33128543388119
+      }
+    ],
+    "Annotations": [],
+    "X": -539.26634447510719,
+    "Y": 425.47306597091875,
+    "Zoom": 0.74737693758599077
+  }
+}
